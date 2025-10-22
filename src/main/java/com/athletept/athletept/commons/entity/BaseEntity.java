@@ -1,4 +1,4 @@
-package com.athletept.athletept.commons.repository;
+package com.athletept.athletept.commons.entity;
 
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
@@ -10,11 +10,10 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.io.Serializable;
 import java.time.Instant;
-import java.time.LocalDateTime;
 
 @Data
 @MappedSuperclass
-public class Persistenze implements Serializable {
+public class BaseEntity implements Serializable {
 
     @Id
     private String uuid;
