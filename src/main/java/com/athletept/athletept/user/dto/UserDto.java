@@ -1,6 +1,7 @@
 package com.athletept.athletept.user.dto;
 
 import com.athletept.athletept.user.enums.Role;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +14,9 @@ public class UserDto {
     private Role role;
     private String name;
     private String email;
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
+
     private Instant createdAt;
 }
