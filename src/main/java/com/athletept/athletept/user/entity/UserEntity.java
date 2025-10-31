@@ -22,7 +22,6 @@ public class UserEntity extends BaseEntity {
     @Column(unique = true, nullable = false)
     private String email;
 
-    // store a HASH here; never plain text
     @Column(nullable = false)
     private String password;
 }

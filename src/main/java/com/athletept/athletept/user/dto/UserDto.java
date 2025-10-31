@@ -11,6 +11,7 @@ import java.time.Instant;
 @Setter
 public class UserDto {
 
+    private String uuid;
     private Role role;
     private String name;
     private String email;

@@ -1,0 +1,13 @@
+server:
+  servlet:
+    session:
+      timeout: 1h   # expire idle sessions
+      cookie:
+        http-only: true
+        secure: true         # true in prod behind HTTPS
+        same-site: LAX       # or STRICT if it fits your flows
+
+spring:
+  security:
+    filter:
+      dispatcher-types: ASYNC, ERROR, REQUEST

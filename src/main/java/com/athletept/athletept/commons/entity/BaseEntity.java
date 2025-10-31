@@ -1,12 +1,10 @@
 package com.athletept.athletept.commons.entity;
 
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.UuidGenerator;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -16,6 +14,8 @@ import java.time.Instant;
 public class BaseEntity implements Serializable {
 
     @Id
+    @GeneratedValue
+    @UuidGenerator
     private String uuid;
 
     @CreationTimestamp
