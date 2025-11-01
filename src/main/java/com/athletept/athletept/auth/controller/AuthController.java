@@ -25,7 +25,6 @@ public class AuthController {
         this.authManager = authManager;
     }
 
-    // POST /api/v1/auth/login
     @PostMapping("/login")
     public ResponseEntity<?> login(@Valid @RequestBody AuthRequest body, HttpServletRequest request) {
         UsernamePasswordAuthenticationToken token =
@@ -44,7 +43,6 @@ public class AuthController {
         }
     }
 
-    // GET /api/v1/auth/me
     @GetMapping("/me")
     public ResponseEntity<?> me(@AuthenticationPrincipal User principal) {
         if (principal == null) {
@@ -53,7 +51,6 @@ public class AuthController {
         return ResponseEntity.ok(new AuthResponse("ok", principal.getUsername()));
     }
 
-    // POST /api/v1/auth/logout
     @PostMapping("/logout")
     public ResponseEntity<?> logout(HttpServletRequest request) {
         if (request.getSession(false) != null) {
