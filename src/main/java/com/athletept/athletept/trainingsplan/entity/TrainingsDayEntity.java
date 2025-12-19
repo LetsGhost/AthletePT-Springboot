@@ -11,8 +11,12 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "")
+@Table(name = "training_day")
 public class TrainingsDayEntity extends BaseEntity {
+
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "plan_id")
+    private TrainingsPlanEntity plan;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -20,6 +24,12 @@ public class TrainingsDayEntity extends BaseEntity {
 
     private String name;
     private Boolean isSkipped;
-    private List<ExerciseEntity> exercises;
-    private List<WarmupEntity> warmups;
+
+    @OneToMany(mappedBy = "day", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OrderColumn(name = "warmup_order")
+    private List<WarmupEntity> warmups = new java.util.ArrayList<>();
+
+    @OneToMany(mappedBy = "day", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OrderColumn(name = "exercise_order")
+    private List<ExerciseEntity> exercises = new java.util.ArrayList<>();
 }
